@@ -1,16 +1,24 @@
-function Buttons() {
+import { useEffect } from "react";
+import buttons from "../../helpers/buttons";
 
-   const buttons = [
-      ["C", "+/-", "%", "/"],
-      ["7", "8", "9", "x"],
-      ["4", "5", "6", "-"],
-      ["1", "2", "3", "+"],
-      ["0", ".", "="]
-   ];
+
+function Buttons(props) {
+   useEffect(() => {
+      window.addEventListener("keypress", (e) => {
+         if (buttons.flat().includes(e.key)) {
+            console.log(e.key)
+         }
+      })
+      return () => window.removeEventListener("keypress", (e) => {
+         if (buttons.flat().includes(e.key)) {
+            console.log(e.key)
+         }
+      })
+   }, [])
 
    return (
       <section className="button-container">
-         {buttons.flat().map(symbol => <div className="button">{symbol}</div>)}
+         {buttons.flat().map(symbol => <div key={symbol} className="button" >{symbol}</div>)}
       </section>
       
    )
