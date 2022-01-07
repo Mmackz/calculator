@@ -1,8 +1,54 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap");
+
+*,
+*::after,
+*::before {
+   box-sizing: border-box;
+}
 
 body {
-  margin: 0;
-  font-family: 'Open Sans', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+   margin: 0;
+   font-family: "Open Sans", sans-serif;
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   min-height: 100vh;
+   height: 100%;
+}
+
+.button {
+   background: rgb(246, 246, 250);
+   color: rgb(33, 75, 214);
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   border-radius: 5px;
+   margin: 0;
+   border: 1px solid rgb(33, 75, 214);
+   line-height: 1rem;
+   padding: calc(50% - 0.5rem - 1px);
+}
+
+.button:last-of-type {
+  grid-column: 3/-1;
+  padding-top: calc(25% - 0.5rem - 2px);
+  padding-bottom: calc(25% - 0.5rem - 1px - 0.125rem);
+}
+
+.main-container {
+   width: min(500px, 50vw);
+   background: darkblue;
+   padding: 1rem;
+}
+
+.button-container {
+   background: #e6e6e6;
+   width: 95%;
+   border-radius: 10px;
+   margin: 0 auto;
+   display: grid;
+   grid-template-columns: repeat(4, 1fr);
+   gap: 0.25rem;
 }
