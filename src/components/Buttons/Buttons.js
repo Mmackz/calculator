@@ -21,7 +21,7 @@ function Buttons(props) {
 
    function handleButtonPress(key) {
       console.log(key);
-      if (buttons.flat().includes(key)) {
+      if (buttons.flat().includes(key) || key === "Enter") {
          if (key === "=" || key === "Enter") {
             console.log("calculating...");
             evaluateExpression();
@@ -49,7 +49,7 @@ function Buttons(props) {
                className="button"
                onClick={() => handleButtonPress(symbol)}
             >
-               {symbol}
+               {symbol === "*" ? "x" : symbol}
             </div>
          ))}
       </section>
