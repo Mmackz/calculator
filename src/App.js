@@ -5,7 +5,8 @@ import reducer from "./helpers/reducers";
 
 function App() {
    const initialState = {
-      display: "0"
+      display: "0",
+      subdisplay : ""
    };
 
    const [state, dispatch] = useReducer(reducer, initialState);
