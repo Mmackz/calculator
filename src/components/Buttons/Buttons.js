@@ -1,38 +1,25 @@
 import { useEffect, useRef } from "react";
-import { evaluate, format } from "mathjs";
 import buttons from "../../helpers/buttons";
-
-const options = {
-   precision: 9,
-   upperExp: 12
-};
 
 function Buttons(props) {
    const { state, dispatch } = props;
 
-   const ref = useRef(state);
-
-   function evaluateExpression() {
-      console.log("evaluating");
-      console.log(ref.current.display);
-      const ans = format(evaluate(ref.current.display), options);
-      console.log(ans);
-   }
+   // const ref = useRef(state);
 
    function handleButtonPress(key) {
       console.log(key);
       if (buttons.flat().includes(key) || key === "Enter") {
-         if (key === "=" || key === "Enter") {
-            console.log("calculating...");
-            evaluateExpression();
-         }
+         // if (key === "=" || key === "Enter") {
+         //    console.log("calculating...");
+         //    evaluateExpression();
+         // }
          dispatch({ type: "display", payload: key });
       }
    }
 
-   useEffect(() => {
-      ref.current = state;
-   }, [state]);
+   // useEffect(() => {
+   //    ref.current = state;
+   // }, [state]);
 
    useEffect(() => {
       window.addEventListener("keydown", (e) => handleButtonPress(e.key));
