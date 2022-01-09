@@ -25,7 +25,13 @@ function Buttons(props) {
                className="button"
                onClick={() => handleButtonPress(symbol)}
             >
-               {symbol === "*" ? "x" : symbol}
+               {symbol === "*" ? (
+                  <>&#215;</>
+               ) : symbol === "/" ? (
+                  <>&#247;</>
+               ) : (
+                  symbol
+               )}
             </div>
          ))}
       </section>
