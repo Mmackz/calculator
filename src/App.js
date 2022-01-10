@@ -15,7 +15,7 @@ function App() {
    return (
       <main className="main-container">
          <Screen display={state.display} subdisplay={state.subdisplay} />
-         <Buttons state={state} dispatch={dispatch} />
+         <Buttons dispatch={dispatch} />
       </main>
    );
 }
