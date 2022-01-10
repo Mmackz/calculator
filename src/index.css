@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap");
 
 :root {
    --bg-color: #f2f2f2;
@@ -6,6 +6,8 @@
    --button-main: #f7f7f7;
    --button-accent: #61c6f2;
 }
+
+/* layout */
 
 *,
 *::after,
@@ -28,6 +30,131 @@ html {
    font-size: 16px;
 }
 
+body {
+   font-family: "Open Sans", sans-serif;
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
+   color: var(--font-color);
+   background: hsla(198, 85%, 66%, 1);
+
+   background: linear-gradient(
+      135deg,
+      hsla(198, 85%, 66%, 1) 20%,
+      hsla(239, 51%, 68%, 1) 100%
+   );
+
+   background: -moz-linear-gradient(
+      135deg,
+      hsla(198, 85%, 66%, 1) 20%,
+      hsla(239, 51%, 68%, 1) 100%
+   );
+
+   background: -webkit-linear-gradient(
+      135deg,
+      hsla(198, 85%, 66%, 1) 20%,
+      hsla(239, 51%, 68%, 1) 100%
+   );
+}
+
+#root {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.main-container {
+   height: 100%;
+   max-height: 760px;
+   width: 100%;
+   max-width: 400px;
+   background: var(--bg-color);
+   padding: 1rem;
+   display: grid;
+   grid-template-rows: 3fr 7fr;
+}
+
+/* screen component */
+
+.screen-container {
+   text-align: right;
+   position: relative;
+}
+
+.screen-inner {
+   position: absolute;
+   bottom: 0;
+   width: 100%;
+}
+
+.display {
+   overflow-wrap: break-word;
+   text-shadow: 0.25px 0.25px 1px #d2d2d2;
+   font-weight: 300;
+}
+
+/* button components */
+
+.button-container {
+   width: 100%;
+   margin-top: 2rem;
+   margin-bottom: 1rem;
+   display: grid;
+   grid-template-columns: repeat(4, 1fr);
+   grid-template-rows: repeat(5, max-content);
+   gap: 1.25rem;
+}
+
+.button {
+   background: var(--button-main);
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   border-radius: 50%;
+   margin: 0;
+   font-size: 2.5rem;
+   box-shadow: 0.25rem 0.25rem 0.75rem #d2d2d2;
+   aspect-ratio: 1/1;
+}
+
+.button:nth-of-type(2) {
+   font-size: 2rem;
+}
+
+.button:nth-of-type(4n),
+.button:last-of-type {
+   background: var(--button-accent);
+   color: var(--button-main);
+   box-shadow: 0 0.35rem 0.75rem #99d8ec;
+}
+
+.button:last-of-type {
+   grid-column: 3/-1;
+   aspect-ratio: 0;
+   border-radius: 100px;
+}
+
+/* media queries */
+
+@media (max-height: 690px) {
+   html,
+   body,
+   #root {
+      height: auto;
+      min-height: 100%;
+   }
+
+   .button-container {
+      margin-bottom: 0;
+      margin-top: 2rem !important;
+   }
+}
+
+@media (min-height: 760px) {
+   .main-container {
+      border-radius: 10px;
+   }
+}
+
 @media (max-width: 359px) {
    html {
       font-size: 15px;
@@ -46,72 +173,21 @@ html {
    }
 }
 
-body {
-   font-family: "Open Sans", sans-serif;
-   -webkit-font-smoothing: antialiased;
-   -moz-osx-font-smoothing: grayscale;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   color: var(--font-color);
-}
+@media (min-width: 520px) {
+   .main-container {
+      max-width: 460px;
+      max-height: 770px;
+      padding: 1.5rem;
+   }
 
-.main-container {
-   height: 100%;
-   width: 100vw;
-   max-width: 600px;
-   background: var(--bg-color);
-   padding: 1rem;
-   display: grid;
-   grid-template-rows: 3fr 7fr;
-}
+   .button-container {
+      margin-bottom: 0;
+      gap: 1rem;
+   }
 
-.screen-container {
-   text-align: right;
-   position: relative;
-}
-
-.screen-inner {
-   position: absolute;
-   bottom: 0;
-   width: 100%;
-}
-
-.display {
-   overflow-wrap: break-word;
-   text-shadow: 0.25px 0.25px 1px #d2d2d2;
-}
-
-.button-container {
-   width: 100%;
-   border-radius: 10px;
-   margin-top: 2rem;
-   margin-bottom: 1rem;
-   display: grid;
-   grid-template-columns: repeat(4, 1fr);
-   gap: 0.75rem;
-}
-
-.button {
-   background: var(--button-main);
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   border-radius: 50%;
-   margin: 0;
-   font-size: 2rem;
-   box-shadow: 0.25rem 0.25rem 0.75rem #d2d2d2;
-   aspect-ratio: 1/1;
-}
-
-.button:nth-of-type(4n), .button:last-of-type {
-   background: var(--button-accent);
-   color: var(--button-main);
-   box-shadow: 0 0.35rem 0.75rem #99d8ec;
-}
-
-.button:last-of-type {
-   grid-column: 3/-1;
-   aspect-ratio: 0;
-   border-radius: 100px;
+   @media (max-height: 720px) {
+      .button-container {
+         margin-top: 1rem;
+      }
+   }
 }
