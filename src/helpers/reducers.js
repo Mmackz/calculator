@@ -42,7 +42,9 @@ function reducer(state, action) {
       if (/[+\-*/]$/.test(state.display) || state.display === "Infinity") {
          return state;
       }
-      const lastNumberMatch = state.display.match(/-?[\d.%]{0,}(?!.*\d)/);
+      const lastNumberMatch = state.display.match(
+         /^-?[\d.%]{0,}(?!.*\d)|(?<=[+\-*/])-?[\d.%]{0,}(?!.*\d)/
+      );
       const lastNumber = -parseFloat(lastNumberMatch);
       const flippedNum = lastNumberMatch[0].endsWith("%")
          ? lastNumber + "%"
