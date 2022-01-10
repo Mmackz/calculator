@@ -29,9 +29,9 @@ function Buttons(props) {
                   <>&#215;</>
                ) : symbol === "/" ? (
                   <>&#247;</>
-               ) : (
-                  symbol
-               )}
+               ) : symbol === "-" ? (
+                  <>&#8722;</>
+               ) : symbol}
             </div>
          ))}
       </section>
