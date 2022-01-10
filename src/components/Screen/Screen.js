@@ -4,6 +4,13 @@ function Screen({ display, subdisplay }) {
    const displayFontSize = calculateFontSize(display);
    const subdisplayFontSize = calculateFontSize(subdisplay);
 
+   function formatDisplay(string) {
+      const operators = { "*": " × ", "/": " ÷ ", "-": " − ", "+": " + " };
+      const addedCommas = string.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+      return addedCommas.replace(/[+\-*/]/g, (match) => operators[match]);
+   }
+
    return (
       <div className="screen-container">
          <div className="screen-inner">
@@ -17,11 +24,13 @@ function Screen({ display, subdisplay }) {
                      }rem`
                   }}
                >
-                  {subdisplay}
+                  {formatDisplay(subdisplay)}
                </p>
             </div>
             <div className="display">
-               <p style={{ fontSize: `${displayFontSize}rem` }}>{display}</p>
+               <p style={{ fontSize: `${displayFontSize}rem` }}>
+                  {formatDisplay(display)}
+               </p>
             </div>
          </div>
       </div>
