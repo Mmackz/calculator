@@ -1,5 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap");
 
+:root {
+   --bg-color: #f2f2f2;
+   --font-color: #54a6c0;
+   --button-main: #f7f7f7;
+   --button-accent: #61c6f2;
+}
+
 *,
 *::after,
 *::before {
@@ -12,74 +19,99 @@ body,
    height: 100%;
 }
 
-body {
+body,
+p {
    margin: 0;
+}
+
+html {
+   font-size: 16px;
+}
+
+@media (max-width: 359px) {
+   html {
+      font-size: 15px;
+   }
+}
+
+@media (max-width: 320px) {
+   html {
+      font-size: 14px;
+   }
+}
+
+@media (max-width: 300px) {
+   html {
+      font-size: 12px;
+   }
+}
+
+body {
    font-family: "Open Sans", sans-serif;
    -webkit-font-smoothing: antialiased;
    -moz-osx-font-smoothing: grayscale;
    display: flex;
    justify-content: center;
    align-items: center;
-}
-
-.screen-container {
-   background: brown;
-   margin-bottom: 1rem;
-   height: 100%;
-   text-align: right;
-   position: relative;;
-}
-
-.screen-inner {
-   position: absolute;
-   bottom: calc(50% - 3.5rem);
-   width: 100%;
-}
-
-.display {
-   min-height: 4rem;
-   background: burlywood;
-   font-size: 4rem;
-}
-
-.subdisplay {
-   min-height: 3rem;
-   background: cadetblue;
-}
-
-.button {
-   background: rgb(8, 187, 241);
-   color: white;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   border-radius: 50%;
-   margin: 0;
-   line-height: 1rem;
-   aspect-ratio: 1/1;
-}
-
-.button:last-of-type {
-   grid-column: 3/-1;
-   /* padding-top: calc(25% - 0.5rem - 2px);
-   padding-bottom: calc(25% - 0.5rem - 1px - 0.125rem); */
-   aspect-ratio: 0;
-   border-radius: 100px;
+   color: var(--font-color);
 }
 
 .main-container {
    height: 100%;
    width: 100vw;
+   max-width: 600px;
+   background: var(--bg-color);
    padding: 1rem;
    display: grid;
-   grid-template-rows: auto max-content;
+   grid-template-rows: 3fr 7fr;
+}
+
+.screen-container {
+   text-align: right;
+   position: relative;
+}
+
+.screen-inner {
+   position: absolute;
+   bottom: 0;
+   width: 100%;
+}
+
+.display {
+   overflow-wrap: break-word;
+   text-shadow: 0.25px 0.25px 1px #d2d2d2;
 }
 
 .button-container {
    width: 100%;
    border-radius: 10px;
-   margin: 1.25rem auto;
+   margin-top: 2rem;
+   margin-bottom: 1rem;
    display: grid;
    grid-template-columns: repeat(4, 1fr);
    gap: 0.75rem;
+}
+
+.button {
+   background: var(--button-main);
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   border-radius: 50%;
+   margin: 0;
+   font-size: 2rem;
+   box-shadow: 0.25rem 0.25rem 0.75rem #d2d2d2;
+   aspect-ratio: 1/1;
+}
+
+.button:nth-of-type(4n), .button:last-of-type {
+   background: var(--button-accent);
+   color: var(--button-main);
+   box-shadow: 0 0.35rem 0.75rem #99d8ec;
+}
+
+.button:last-of-type {
+   grid-column: 3/-1;
+   aspect-ratio: 0;
+   border-radius: 100px;
 }
