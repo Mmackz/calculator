@@ -19,8 +19,23 @@ function reducer(state, action) {
       return ans;
    }
 
+   function animateDisplay() {
+      const mainDisplay = document.getElementById("main-display");
+      const subDisplay = document.getElementById("sub-display");
+      const innerScreen = document.querySelector(".screen-inner");
+      mainDisplay.classList.add("animate-main-display");
+      subDisplay.classList.add("animate-sub-display");
+      innerScreen.classList.add("animate-lineheight");
+      setTimeout(() => {
+         mainDisplay.classList.remove("animate-main-display");
+         subDisplay.classList.remove("animate-sub-display");
+         innerScreen.classList.remove("animate-lineheight");
+      }, 250);
+   }
+
    if (payload === "=" || payload === "Enter") {
       const ans = evaluateExpression();
+      animateDisplay();
       return {
          ...state,
          display: ans,

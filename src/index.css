@@ -78,18 +78,59 @@ body {
 .screen-container {
    text-align: right;
    position: relative;
+   height: 100%;
 }
 
 .screen-inner {
    position: absolute;
    bottom: 0;
    width: 100%;
+   overflow: hidden;
 }
 
 .display {
    overflow-wrap: break-word;
    text-shadow: 0.25px 0.25px 1px #d2d2d2;
    font-weight: 300;
+}
+
+.animate-main-display {
+   animation: animate-main-display 250ms ease;
+}
+
+.animate-sub-display {
+   animation: animate-sub-display 250ms ease;
+}
+
+.animate-lineheight {
+   animation: animate-lineheight 250ms ease;
+}
+
+@keyframes animate-main-display {
+   0% {
+      transform: translateY(4rem);
+   }
+   100% {
+      transform: translateY(0);
+   }
+}
+
+@keyframes animate-sub-display {
+   0% {
+      transform: scale(1.25);
+   }
+   100% {
+      transform: scale(1);
+   }
+}
+
+@keyframes animate-lineheight {
+   0% {
+      line-height: 0.75;
+   }
+   100% {
+      line-height: 1.35;
+   }
 }
 
 /* button components */

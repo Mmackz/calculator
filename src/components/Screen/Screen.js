@@ -16,6 +16,7 @@ function Screen({ display, subdisplay }) {
          <div className="screen-inner">
             <div className="display">
                <p
+                  id="sub-display"
                   style={{
                      fontSize: `${
                         subdisplayFontSize * 0.45 < 1
@@ -28,7 +29,10 @@ function Screen({ display, subdisplay }) {
                </p>
             </div>
             <div className="display">
-               <p style={{ fontSize: `${displayFontSize}rem` }}>
+               <p
+                  id="main-display"
+                  style={{ fontSize: `${displayFontSize}rem` }}
+               >
                   {formatDisplay(display)}
                </p>
             </div>
