@@ -60,9 +60,9 @@ function reducer(state, action) {
          return state;
       }
       if (state.display === "Infinity") {
-         return { ...state, display: "−Infinity" };
+         return { ...state, display: "-Infinity" };
       }
-      if (state.display === "−Infinity") {
+      if (state.display === "-Infinity") {
          return { ...state, display: "Infinity" };
       }
       const lastNumberMatch = state.display.match(
