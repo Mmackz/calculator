@@ -6,8 +6,10 @@ function Screen({ display, subdisplay }) {
 
    function formatDisplay(string) {
       const operators = { "*": " × ", "/": " ÷ ", "-": " − ", "+": " + " };
-      const addedCommas = string.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-
+      const addedCommas = string.replace(
+         /\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g,
+         ","
+      );
       return addedCommas.replace(/[+\-*/]/g, (match) => operators[match]);
    }
 
