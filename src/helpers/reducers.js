@@ -64,7 +64,7 @@ function reducer(state, action) {
          return state;
       }
       // if equation is in exponential notation (eg. 10e+12)
-      if (/-?\d+e[+-]\d+/.test(state.display)) {
+      if (/-?\d+e[+-]\d+$/.test(state.display)) {
          const expDisplay = state.display.startsWith("-")
             ? state.display.slice(1)
             : `-${state.display}`;
