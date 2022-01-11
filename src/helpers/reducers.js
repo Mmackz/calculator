@@ -41,7 +41,7 @@ function reducer(state, action) {
          ...state,
          display: ans,
          subdisplay: state.evaluatedLastInput
-            ? state.display + lastInput 
+            ? state.display + lastInput
             : /[+\-*/]$/.test(state.display)
             ? state.display.slice(0, -1)
             : state.display,
@@ -54,9 +54,15 @@ function reducer(state, action) {
    }
 
    if (payload === "+/-") {
-      // if equation ends with an operator or is infinity
-      if (/[+\-*/]$/.test(state.display) || state.display === "Infinity") {
+      // if equation ends with an operator
+      if (/[+\-*/]$/.test(state.display)) {
          return state;
+      }
+      if (state.display === "Infinity") {
+         return { ...state, display: "−Infinity" };
+      }
+      if (state.display === "−Infinity") {
+         return { ...state, display: "Infinity" };
       }
       const lastNumberMatch = state.display.match(
          /^-?[\d.%]{0,}(?!.*\d)|(?<=[+\-*/])-?[\d.%]{0,}(?!.*\d)/
@@ -80,7 +86,7 @@ function reducer(state, action) {
       if (state.evaluatedLastInput) {
          return {
             ...state,
-            display: payload,
+            display: `0.`,
             subdisplay: "",
             evaluatedLastInput: false
          };
@@ -101,7 +107,11 @@ function reducer(state, action) {
          !/%\d*\D*(?!.*[\d+\-/*])/.test(state.display) &&
          !/[+\-*/]$/.test(state.display)
       ) {
-         return { ...state, display: state.display + "%" };
+         return {
+            ...state,
+            display: state.display + "%",
+            evaluatedLastInput: false
+         };
       }
       return state;
    }
