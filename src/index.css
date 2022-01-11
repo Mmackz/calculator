@@ -155,6 +155,13 @@ body {
    font-size: 2.5rem;
    box-shadow: 0.25rem 0.25rem 0.75rem #d2d2d2;
    aspect-ratio: 1/1;
+   cursor: pointer;
+   -webkit-tap-highlight-color:  transparent;
+}
+
+.button:active {
+   background: #f2f6fa;
+   transform: scale(0.97);
 }
 
 .button:nth-of-type(2) {
@@ -166,6 +173,11 @@ body {
    background: var(--button-accent);
    color: var(--button-main);
    box-shadow: 0 0.35rem 0.75rem #99d8ec;
+}
+
+.button:nth-of-type(4n):active,
+.button:last-of-type:active {
+   background: #52bff1;
 }
 
 .button:last-of-type {
