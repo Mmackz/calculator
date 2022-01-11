@@ -7,16 +7,19 @@ const options = {
 
 function reducer(state, action) {
    const { payload } = action;
-   const lastInput = state.subdisplay.match(
-      /[+\-*/]-?[\d.%]{0,}(?!.*\d)|(?<=[+\-*/])-?[\d.%]{0,}(?!.*\d)/
-   );
+   const lastInput = state.subdisplay.match(/\b[+\-*/]-?[\d.%]{0,}(?!.*\d)/);
 
    function evaluateExpression() {
       const display = /[+\-*/]$/.test(state.display)
          ? state.display.slice(0, -1)
          : state.display;
+
       const ans = format(
-         evaluate(state.evaluatedLastInput ? display + lastInput : display),
+         evaluate(
+            state.evaluatedLastInput && lastInput
+               ? display + lastInput
+               : display
+         ),
          options
       );
       return ans;
@@ -41,11 +44,12 @@ function reducer(state, action) {
       animateDisplay();
       return {
          display: ans,
-         subdisplay: state.evaluatedLastInput
-            ? state.display + lastInput
-            : /[+\-*/]$/.test(state.display)
-            ? state.display.slice(0, -1)
-            : state.display,
+         subdisplay:
+            state.evaluatedLastInput && lastInput
+               ? state.display + lastInput
+               : /[+\-*/]$/.test(state.display)
+               ? state.display.slice(0, -1)
+               : state.display,
          evaluatedLastInput: true
       };
    }
