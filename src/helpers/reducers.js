@@ -38,7 +38,6 @@ function reducer(state, action) {
       const ans = evaluateExpression();
       animateDisplay();
       return {
-         ...state,
          display: ans,
          subdisplay: state.evaluatedLastInput
             ? state.display + lastInput
@@ -85,7 +84,6 @@ function reducer(state, action) {
    if (payload === ".") {
       if (state.evaluatedLastInput) {
          return {
-            ...state,
             display: `0.`,
             subdisplay: "",
             evaluatedLastInput: false
@@ -120,7 +118,6 @@ function reducer(state, action) {
    if (/\d/.test(payload)) {
       if (state.evaluatedLastInput) {
          return {
-            ...state,
             display: payload,
             subdisplay: "",
             evaluatedLastInput: false
