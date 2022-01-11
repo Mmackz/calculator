@@ -7,7 +7,9 @@ const options = {
 
 function reducer(state, action) {
    const { payload } = action;
-   const lastInput = state.subdisplay.match(/[+\-*/]-?[\d.%]{0,}(?!.*\d)|(?<=[+\-*/])-?[\d.%]{0,}(?!.*\d)/);
+   const lastInput = state.subdisplay.match(
+      /[+\-*/]-?[\d.%]{0,}(?!.*\d)|(?<=[+\-*/])-?[\d.%]{0,}(?!.*\d)/
+   );
 
    function evaluateExpression() {
       const display = /[+\-*/]$/.test(state.display)
@@ -64,7 +66,7 @@ function reducer(state, action) {
          return { ...state, display: "Infinity" };
       }
       const lastNumberMatch = state.display.match(
-         /^-?[\d.%]{0,}(?!.*\d)|(?<=[+\-*/])-?[\d.%]{0,}(?!.*\d)/
+         /^-?[\d.%]{0,}(?!.*\d)|(?<=[+\-*/])-?[\d*%]{0,}(?!.*\d)/
       );
       const lastNumber = -parseFloat(lastNumberMatch);
       const flippedNum = lastNumberMatch[0].endsWith("%")
@@ -123,8 +125,12 @@ function reducer(state, action) {
             evaluatedLastInput: false
          };
       }
-      if (state.display === "0") {
-         return { ...state, display: payload };
+      // replace single zeroes with input
+      if (/(?<=[+\-*/]|\b)0{1}$/.test(state.display)) {
+         return {
+            ...state,
+            display: state.display.replace(/(?<=[+\-*/]|\b)0{1}$/, payload)
+         };
       }
       if (!state.display.endsWith("%")) {
          return { ...state, display: state.display + payload };
