@@ -117,10 +117,10 @@ body {
 
 @keyframes animate-sub-display {
    0% {
-      transform: scale(1.25);
+      transform: scale(1.25) translateX(-3.25rem);
    }
    100% {
-      transform: scale(1);
+      transform: scale(1) translateX(0);
    }
 }
 
