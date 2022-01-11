@@ -10,7 +10,9 @@ function Screen({ display, subdisplay }) {
          /\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g,
          ","
       );
-      return addedCommas.replace(/[+\-*/]/g, (match) => operators[match]);
+      return addedCommas
+         .replace(/[+\-*/]/g, (match) => operators[match])
+         .replace(/(?<=e)\s\+\s/, "⁺");
    }
 
    return (
