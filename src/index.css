@@ -137,8 +137,8 @@ body {
 
 .button-container {
    width: 100%;
-   margin-top: 2rem;
-   margin-bottom: 1rem;
+   margin-top: 1.75rem;
+   margin-bottom: 0.75rem;
    display: grid;
    grid-template-columns: repeat(4, 1fr);
    grid-template-rows: repeat(5, max-content);
@@ -199,13 +199,16 @@ body {
 
    .button-container {
       margin-bottom: 0;
-      margin-top: 2rem !important;
+      margin-top: 1.75rem !important;
    }
 }
 
-@media (min-height: 760px) {
+@media (min-height: 770px), (min-width: 420px) {
+
    .main-container {
       border-radius: 14px;
+      margin: 0.5rem;
+      height: 98%;
    }
 }
 
@@ -229,14 +232,15 @@ body {
 
 @media (min-width: 520px) {
    .main-container {
-      max-width: 460px;
-      max-height: 770px;
+      max-width: 440px;
+      max-height: 760px;
       padding: 1.5rem;
+      box-shadow: 2px 2px 40px rgba(10, 8, 153, 0.397);
    }
 
    .button-container {
       margin-bottom: 0;
-      gap: 1rem;
+      gap: 1.55rem;
    }
 
    @media (max-height: 720px) {
