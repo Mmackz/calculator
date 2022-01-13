@@ -239,13 +239,17 @@ body {
    }
 
    .button-container {
-      margin-bottom: 0;
+      margin-bottom: 0.5rem;
       gap: 1.55rem;
    }
 
    @media (max-height: 720px) {
+      .main-container {
+         width: 410px;
+      }
       .button-container {
          margin-top: 1rem;
+         margin-bottom: 0;
       }
    }
 }
