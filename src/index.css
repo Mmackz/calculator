@@ -138,7 +138,7 @@ body {
 .button-container {
    width: 100%;
    margin-top: 1.75rem;
-   margin-bottom: 0.75rem;
+   margin-bottom: 0.7rem;
    display: grid;
    grid-template-columns: repeat(4, 1fr);
    grid-template-rows: repeat(5, max-content);
@@ -213,8 +213,8 @@ body {
    }
 
    .button-container {
-      margin-bottom: 0;
-      margin-top: 1.75rem !important;
+      margin-bottom: 0.25rem;
+      margin-top: 1.7rem !important;
    }
 }
 
@@ -254,7 +254,6 @@ body {
    }
 
    .button-container {
-      margin-bottom: 0;
       gap: 1.55rem;
    }
 
