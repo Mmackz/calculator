@@ -6,13 +6,19 @@ function Screen({ display, subdisplay }) {
 
    function formatDisplay(string) {
       const operators = { "*": " × ", "/": " ÷ ", "-": " − ", "+": " + " };
-      const addedCommas = string.replace(
-         /\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g,
-         ","
-      );
-      return addedCommas
+
+      function addCommas(match) {
+         const addedCommas = match.replace(/^\d{4,}/, (m) => {
+            return m.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+         });
+         return addedCommas;
+      }
+
+      const numbers = string.replace(/\d+\.?\d+/g, (match) => addCommas(match));
+
+      return numbers
          .replace(/[+\-*/]/g, (match) => operators[match])
-         .replace(/(?<=e)\s\+\s/, "⁺");
+         .replace(/e\s\+\s/, "e⁺");
    }
 
    return (

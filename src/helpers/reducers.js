@@ -2,7 +2,8 @@ import { evaluate, format } from "mathjs";
 
 const options = {
    precision: 12,
-   upperExp: 12
+   upperExp: 12,
+   lowerExp: -20
 };
 
 function reducer(state, action) {
@@ -78,7 +79,7 @@ function reducer(state, action) {
          return { ...state, display: "Infinity" };
       }
       const lastNumberMatch = state.display.match(
-         /^-?[\d.%]{0,}(?!.*\d)|(?<=[+\-*/])-?[\d*%]{0,}(?!.*\d)/
+         /-?[\d.%]{1,}(?!.*\d)|-?\d+\.\d+e.\d+%?(?!.*\d)/
       );
       const lastNumber = -parseFloat(lastNumberMatch);
       const flippedNum = lastNumberMatch[0].endsWith("%")
@@ -102,6 +103,10 @@ function reducer(state, action) {
             subdisplay: "",
             evaluatedLastInput: false
          };
+      }
+      // if equation ends with an operator
+      if (/[+\-*/]$/.test(state.display)) {
+         return { ...state, display: state.display + "0." };
       }
       // if last input does not contain a decimal point
       if (
@@ -137,13 +142,15 @@ function reducer(state, action) {
             evaluatedLastInput: false
          };
       }
+
       // replace single zeroes with input
-      if (/(?<=[+\-*/]|\b)0{1}$/.test(state.display)) {
+      if (state.display.match(/[\d.%]{1,}(?!.*\d)/)[0] === "0") {
          return {
             ...state,
-            display: state.display.replace(/(?<=[+\-*/]|\b)0{1}$/, payload)
-         };
+            display: state.display.slice(0, -1) + payload
+         }
       }
+
       if (!state.display.endsWith("%")) {
          return { ...state, display: state.display + payload };
       }
