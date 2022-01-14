@@ -27,7 +27,7 @@ function reducer(state, action) {
    }
 
    function animateDisplay() {
-      const mainDisplay = document.getElementById("main-display");
+      const mainDisplay = document.getElementById("display");
       const subDisplay = document.getElementById("sub-display");
       const innerScreen = document.querySelector(".screen-inner");
       mainDisplay.classList.add("animate-main-display");
@@ -148,7 +148,7 @@ function reducer(state, action) {
          return {
             ...state,
             display: state.display.slice(0, -1) + payload
-         }
+         };
       }
 
       if (!state.display.endsWith("%")) {

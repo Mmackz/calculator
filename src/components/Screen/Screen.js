@@ -40,7 +40,7 @@ function Screen({ display, subdisplay }) {
             </div>
             <div className="display">
                <p
-                  id="main-display"
+                  id="display"
                   style={{ fontSize: `${displayFontSize}rem` }}
                >
                   {formatDisplay(display)}

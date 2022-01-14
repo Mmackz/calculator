@@ -5,7 +5,7 @@ function Buttons(props) {
    const { dispatch } = props;
 
    function handleButtonPress(key) {
-      if (buttons.flat().includes(key) || key === "Enter") {
+      if (buttons.some(button => button.symbol === key) || key === "Enter") {
          dispatch({ payload: key });
       }
    }
@@ -19,21 +19,22 @@ function Buttons(props) {
 
    return (
       <section className="button-container">
-         {buttons.flat().map((symbol) => (
+         {buttons.map((button) => (
             <div
-               key={symbol}
+               key={button.id}
                className="button"
-               onClick={() => handleButtonPress(symbol)}
+               id={button.id}
+               onClick={() => handleButtonPress(button.symbol)}
             >
                <div>
-                  {symbol === "*" ? (
+                  {button.symbol === "*" ? (
                      <>&#215;</>
-                  ) : symbol === "/" ? (
+                  ) : button.symbol === "/" ? (
                      <>&#247;</>
-                  ) : symbol === "-" ? (
+                  ) : button.symbol === "-" ? (
                      <>&#8722;</>
                   ) : (
-                     symbol
+                     button.symbol
                   )}
                </div>
             </div>
