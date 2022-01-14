@@ -2,7 +2,7 @@
 
 FreeCodeCamp Calculator Project for the Front End Development Libraries Certification Course 📚
 
-<div align="center"><img src="https://i.imgur.com/Q8fHqMi.png" alt="project-image" width="480px" /></div>
+<div align="center"><img src="https://i.imgur.com/e5jqT5v.png" alt="project-image" width="480px" /></div>
 
 <br/>
 
