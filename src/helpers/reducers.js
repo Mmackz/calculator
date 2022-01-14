@@ -2,7 +2,8 @@ import { evaluate, format } from "mathjs";
 
 const options = {
    precision: 12,
-   upperExp: 12
+   upperExp: 12,
+   lowerExp: -20
 };
 
 function reducer(state, action) {
