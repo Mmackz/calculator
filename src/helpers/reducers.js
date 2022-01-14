@@ -159,9 +159,16 @@ function reducer(state, action) {
 
    // if input an operator
    if (/[+\-*/]/.test(payload)) {
+      // if equation ends with 2 operators
+      if (/[+\-*/]{2}$/.test(state.display)) {
+         return { ...state, display: state.display.slice(0, -2) + payload };
+      }
       // if equation ends with an operator
       if (/[+\-*/]$/.test(state.display)) {
-         return { ...state, display: state.display.slice(0, -1) + payload };
+         if (payload === "*" || payload === "/" || payload === "+") {
+            return { ...state, display: state.display.slice(0, -1) + payload };
+         }
+         return { ...state, display: state.display + payload };
       }
       return {
          ...state,
