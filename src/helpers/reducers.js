@@ -103,6 +103,10 @@ function reducer(state, action) {
             evaluatedLastInput: false
          };
       }
+      // if equation ends with an operator
+      if (/[+\-*/]$/.test(state.display)) {
+         return { ...state, display: state.display + "0." };
+      }
       // if last input does not contain a decimal point
       if (
          !/\.\d*(?!.*[\d+\-/*])/.test(state.display) &&
