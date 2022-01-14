@@ -247,9 +247,8 @@ body {
 
 @media (min-width: 520px) {
    .main-container {
-      max-width: 440px;
-      max-height: 760px;
-      padding: 1.5rem;
+      max-width: 430px;
+      padding: 1.5rem 1.5rem 1.35rem;
       box-shadow: 2px 2px 40px rgba(10, 8, 153, 0.397);
    }
 
