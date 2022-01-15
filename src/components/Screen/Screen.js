@@ -1,8 +1,8 @@
 import calculateFontSize from "../../helpers/calculateFontSize";
 
 function Screen({ display, subdisplay }) {
-   const displayFontSize = calculateFontSize(display);
-   const subdisplayFontSize = calculateFontSize(subdisplay);
+   const displayFontSize = calculateFontSize(formatDisplay(display));
+   const subdisplayFontSize = calculateFontSize(formatDisplay(display));
 
    function formatDisplay(string) {
       const operators = { "*": " × ", "/": " ÷ ", "-": " − ", "+": " + " };
