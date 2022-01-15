@@ -5,7 +5,7 @@ function Screen({ display, subdisplay }) {
    const subdisplayFontSize = calculateFontSize(formatDisplay(display));
 
    function formatDisplay(string) {
-      const operators = { "*": " × ", "/": " ÷ ", "-": " − ", "+": " + " };
+      const operators = { "*": " × ", "/": " ÷ ", "+": " + " };
 
       function addCommas(match) {
          const addedCommas = match.replace(/^\d{4,}/, (m) => {
@@ -17,7 +17,7 @@ function Screen({ display, subdisplay }) {
       const numbers = string.replace(/\d+\.?\d+/g, (match) => addCommas(match));
 
       return numbers
-         .replace(/[+\-*/]/g, (match) => operators[match])
+         .replace(/[+*/]/g, (match) => operators[match])
          .replace(/e\s\+\s/, "e⁺");
    }
 
