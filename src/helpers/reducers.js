@@ -81,18 +81,34 @@ function reducer(state, action) {
       const lastNumberMatch = state.display.match(
          /-?[\d.%]{1,}(?!.*\d)|-?\d+\.\d+e.\d+%?(?!.*\d)/
       );
-      const lastNumber = -parseFloat(lastNumberMatch);
+
+      let isPrecededByDigit = false;
+
+      if (
+         lastNumberMatch[0].startsWith("-") &&
+         /\d/.test(state.display[lastNumberMatch.index - 1])
+      ) {
+         isPrecededByDigit = true;
+      }
+
+      // if subtract symbol is preceded by digit
+      const lastNumber = isPrecededByDigit
+         ? -parseFloat(lastNumberMatch[0].slice(1))
+         : -parseFloat(lastNumberMatch[0]);
+
+      const index = isPrecededByDigit
+         ? lastNumberMatch.index + 1
+         : lastNumberMatch.index
+         ? lastNumberMatch.index
+         : 0;
+
       const flippedNum = lastNumberMatch[0].endsWith("%")
          ? lastNumber + "%"
          : lastNumber;
 
       return {
          ...state,
-         display:
-            state.display.slice(
-               0,
-               lastNumberMatch.index ? lastNumberMatch.index : 0
-            ) + flippedNum
+         display: state.display.slice(0, index) + flippedNum
       };
    }
 
@@ -148,7 +164,7 @@ function reducer(state, action) {
          return {
             ...state,
             display: state.display.slice(0, -1) + payload
-         }
+         };
       }
 
       if (!state.display.endsWith("%")) {
