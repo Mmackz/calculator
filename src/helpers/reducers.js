@@ -160,7 +160,10 @@ function reducer(state, action) {
       }
 
       // replace single zeroes with input
-      if (state.display.match(/[\d.%]{1,}(?!.*\d)/)[0] === "0") {
+      if (
+         state.display.endsWith("0") &&
+         state.display.match(/[\d.%]{1,}(?!.*\d)$/)[0] === "0"
+      ) {
          return {
             ...state,
             display: state.display.slice(0, -1) + payload
